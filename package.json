@@ -1,6 +1,6 @@
 {
   "name": "ml-roc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Classifier",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -48,5 +48,6 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "rollup": "^2.39.0"
-  }
+  },
+  "dependencies": {}
 }
