@@ -1,4 +1,4 @@
-import { getNumericalTarget, getClasses, roc, auc } from '..';
+import { getNumericalTarget, getLabelsData, curve, auc } from '..';
 
 describe('Roc curve to coffee samples', () => {
   const target = [
@@ -15,10 +15,10 @@ describe('Roc curve to coffee samples', () => {
   const predicted = [0.95, 0.15, 0.13, 0.08, 0.93, 0.91, 0.99, 0.12];
 
   it('Get classes from metadata', () => {
-    const classes = getClasses(target);
+    const classes = getLabelsData(target);
     expect(classes).toStrictEqual([
-      { class: 'arabica', value: 0 },
-      { class: 'robusta', value: 1 },
+      { class: 'arabica', value: 0, IDs: [0, 1, 2, 3] },
+      { class: 'robusta', value: 1, IDs: [4, 5, 6, 7] },
     ]);
   });
 
@@ -28,7 +28,7 @@ describe('Roc curve to coffee samples', () => {
   });
 
   it('Receiver Operating Characteristic', () => {
-    const rocCurve = roc(target, predicted);
+    const rocCurve = curve(target, predicted);
     expect(rocCurve).toStrictEqual({
       truePositiveRate: [
         1,
@@ -60,7 +60,7 @@ describe('Roc curve to coffee samples', () => {
   });
 
   it('Area under the curve of ROC', () => {
-    const aucCurve = auc(roc(target, predicted));
+    const aucCurve = auc(curve(target, predicted));
     expect(aucCurve).toStrictEqual(0.78125);
   });
 });
