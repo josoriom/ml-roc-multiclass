@@ -23,40 +23,46 @@ describe('Roc curve to coffee samples', () => {
   });
 
   it('Classify numerically', () => {
-    const numericalClass = getNumericalTarget(target);
+    const pairs = [
+      { class: 'arabica', value: 0, IDs: [0, 1, 2, 3] },
+      { class: 'robusta', value: 1, IDs: [4, 5, 6, 7] },
+    ];
+    const numericalClass = getNumericalTarget(target, pairs);
     expect(numericalClass).toStrictEqual([0, 0, 0, 0, 1, 1, 1, 1]);
   });
 
   it('Receiver Operating Characteristic', () => {
     const rocCurve = curve(target, predicted);
-    expect(rocCurve).toStrictEqual({
-      truePositiveRate: [
-        1,
-        1,
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0,
-      ],
-      falsePositiveRate: [
-        1,
-        0.75,
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0,
-      ],
-    });
+    expect(rocCurve).toStrictEqual([
+      {
+        truePositiveRate: [
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0,
+        ],
+        falsePositiveRate: [
+          1,
+          0.75,
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0,
+        ],
+      },
+    ]);
   });
 
   it('Area under the curve of ROC', () => {
