@@ -1,43 +1,43 @@
+import max from 'ml-array-max';
 import mean from 'ml-array-mean';
+import min from 'ml-array-min';
 
 /**
  * Receiver Operating Characteristic
  * @param {Array} target Array containing category metadata
- * @param {Array} predicted Array containing result of regression
+ * @param {Array} prediction Array containing result of regression
  * @return {number}
  */
-export function curve(response, predicted, options = {}) {
-  const { curveStepSize = 0.1 } = options;
+export function curve(response, prediction) {
   const classes = getLabelsData(response);
   const pairsOfClasses = getClassesPairs(classes);
   let results = [];
   for (let pairs of pairsOfClasses) {
+    const test = getSelectedSamples(prediction, pairs);
     const target = getNumericalTarget(
       getSelectedSamples(response, pairs),
+      test,
       pairs,
     );
-    const test = getSelectedSamples(predicted, pairs);
-    let result = { truePositiveRate: [1], falsePositiveRate: [1] };
-    for (
-      let limit = pairs[0].value + curveStepSize;
-      limit < pairs[1].value;
-      limit += curveStepSize
-    ) {
+    let result = { sensitivities: [], specificities: [] };
+    const limits = getThreshold(test);
+    for (let limit of limits) {
       let truePositives = 0;
       let falsePositives = 0;
       let trueNegatives = 0;
       let falseNegatives = 0;
       for (let j = 0; j < target.length; j++) {
         if (test[j] > limit && target[j] > limit) truePositives++;
-        if (test[j] > limit && target[j] < limit) falsePositives++;
+        if (test[j] >= limit && target[j] <= limit) falsePositives++;
         if (test[j] < limit && target[j] < limit) trueNegatives++;
-        if (test[j] < limit && target[j] > limit) falseNegatives++;
+        if (test[j] <= limit && target[j] >= limit) falseNegatives++;
       }
-      result.truePositiveRate.push(
+      result.sensitivities.push(
         truePositives / (truePositives + falseNegatives),
       );
-      result.falsePositiveRate.push(
-        falsePositives / (trueNegatives + falsePositives),
+
+      result.specificities.push(
+        trueNegatives / (falsePositives + trueNegatives),
       );
     }
     results.push(result);
@@ -54,9 +54,9 @@ export function auc(curves) {
   let result = [];
   for (let array of curves) {
     let area = 0;
-    const x = array.falsePositiveRate.reverse();
-    const y = array.truePositiveRate.reverse();
-    for (let i = 1; i < array.truePositiveRate.length; i++) {
+    const x = array.specificities;
+    const y = array.sensitivities;
+    for (let i = 1; i < x.length; i++) {
       area += 0.5 * (x[i] - x[i - 1]) * (y[i] + y[i - 1]);
     }
     result.push(area);
@@ -95,12 +95,13 @@ export function getLabelsData(array) {
  * @param {Array} target Array containing the categories
  * @return {Array} Array containing the categories assinged as numbers
  */
-export function getNumericalTarget(target, pairs) {
+export function getNumericalTarget(target, test, pair) {
+  const boundaries = [min(test) - 0.001, max(test) + 0.001];
   let result = [];
   for (let i = 0; i < target.length; i++) {
-    for (let j = 0; j < pairs.length; j++) {
-      if (target[i] === pairs[j].class) {
-        result[i] = pairs[j].value;
+    for (let j = 0; j < pair.length; j++) {
+      if (target[i] === pair[j].class) {
+        result[i] = boundaries[j];
         break;
       }
     }
@@ -111,7 +112,6 @@ export function getNumericalTarget(target, pairs) {
 function getClassesPairs(list) {
   let result = [];
   for (let i = 0; i < list.length - 1; i++) {
-    // This is where you'll capture that last value
     for (let j = i + 1; j < list.length; j++) {
       result.push([list[i], list[j]]);
     }
@@ -119,12 +119,24 @@ function getClassesPairs(list) {
   return result;
 }
 
-function getSelectedSamples(array, pair) {
+function getSelectedSamples(response, pair) {
   let result = [];
   for (let i = 0; i < pair.length; i++) {
     for (let j = 0; j < pair[i].IDs.length; j++) {
-      result.push(array[pair[i].IDs[j]]);
+      const value = response[pair[i].IDs[j]];
+      result.push(value);
     }
   }
+  return result;
+}
+
+function getThreshold(predictor) {
+  let unique = [...new Set(predictor)].sort((a, b) => a - b);
+  let result = [unique[0]];
+  for (let i = 0; i < unique.length - 1; i++) {
+    const half = (unique[i + 1] - unique[i]) / 2;
+    result.push(unique[i] + half);
+  }
+  result.push(unique[unique.length - 1] + 0.001);
   return result;
 }
