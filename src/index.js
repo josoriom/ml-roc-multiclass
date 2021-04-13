@@ -59,6 +59,7 @@ export function auc(curves) {
     for (let i = 1; i < x.length; i++) {
       area += 0.5 * (x[i] - x[i - 1]) * (y[i] + y[i - 1]);
     }
+    area = area > 0.5 ? area : 1 - area;
     result.push(area);
   }
   return mean(result);
