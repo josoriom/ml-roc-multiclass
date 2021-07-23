@@ -1,6 +1,7 @@
 import max from 'ml-array-max';
 import mean from 'ml-array-mean';
 import min from 'ml-array-min';
+
 import { getClassesPairs } from './getClassesPairs';
 import { getSelectedSamples } from './getSelectedSamples';
 import { getThresholds } from './getThresholds';
