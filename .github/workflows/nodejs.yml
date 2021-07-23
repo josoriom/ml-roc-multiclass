@@ -5,17 +5,14 @@ on:
     branches: master
   pull_request:
 
-env:
-  NODE_VERSION: 14.x
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2-beta
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: 14.x
       - name: Install dependencies
         run: npm install
       - name: Run ESLint
@@ -24,17 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
-      fail-fast: false
+        node-version: [12.x, 14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2-beta
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and test
-        run: |
-          npm install
-          npm run test-coverage
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test-coverage
       - name: Send coverage report to Codecov
         uses: codecov/codecov-action@v1
