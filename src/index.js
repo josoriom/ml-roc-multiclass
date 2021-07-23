@@ -1,6 +1,9 @@
 import max from 'ml-array-max';
 import mean from 'ml-array-mean';
 import min from 'ml-array-min';
+import { getClassesPairs } from './getClassesPairs';
+import { getSelectedSamples } from './getSelectedSamples';
+import { getThresholds } from './getThresholds';
 
 /**
  * Receiver Operating Characteristic
@@ -20,7 +23,7 @@ export function curve(response, prediction) {
       pairs,
     );
     let result = { sensitivities: [], specificities: [] };
-    const limits = getThreshold(test);
+    const limits = getThresholds(test);
     for (let limit of limits) {
       let truePositives = 0;
       let falsePositives = 0;
@@ -110,34 +113,4 @@ export function getNumericalTarget(target, test, pair) {
   return result;
 }
 
-function getClassesPairs(list) {
-  let result = [];
-  for (let i = 0; i < list.length - 1; i++) {
-    for (let j = i + 1; j < list.length; j++) {
-      result.push([list[i], list[j]]);
-    }
-  }
-  return result;
-}
 
-function getSelectedSamples(response, pair) {
-  let result = [];
-  for (let i = 0; i < pair.length; i++) {
-    for (let j = 0; j < pair[i].IDs.length; j++) {
-      const value = response[pair[i].IDs[j]];
-      result.push(value);
-    }
-  }
-  return result;
-}
-
-function getThreshold(predictor) {
-  let unique = [...new Set(predictor)].sort((a, b) => a - b);
-  let result = [unique[0]];
-  for (let i = 0; i < unique.length - 1; i++) {
-    const half = (unique[i + 1] - unique[i]) / 2;
-    result.push(unique[i] + half);
-  }
-  result.push(unique[unique.length - 1] + 0.001);
-  return result;
-}
