@@ -1,4 +1,4 @@
-export function getSelectedSamples(response, pair) {
+export function getSelectedResults(response, pair) {
   let result = [];
   for (let i = 0; i < pair.length; i++) {
     for (let j = 0; j < pair[i].IDs.length; j++) {
