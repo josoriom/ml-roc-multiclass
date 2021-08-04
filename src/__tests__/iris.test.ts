@@ -13,33 +13,34 @@ t_orth_cv <- as.numeric(model@t_orth_cv)
 */
 import { getClasses } from 'ml-dataset-iris';
 
+// import { predictions} from '../../data/predictions.json';
 import predictions from '../../data/predictions.json';
 import { getAuc } from '../getAuc';
 import { getRocCurve } from '../getRocCurve';
 
-const metadata = getClasses();
+const metadata: string[] = getClasses();
 
 describe('Iris dataset', () => {
   it('Area under the curve of ROC with t_pred', () => {
-    const auc0 = getAuc(getRocCurve(metadata, predictions[0].array));
+    const auc0: number = getAuc(getRocCurve(metadata, predictions[0].array));
     // iris_auc0 <- multiclass.roc(response = iris[,5], predictor = as.numeric(t_pred), plot = TRUE)
     expect(auc0).toBeCloseTo(0.9845, 4);
   });
 
   it('Area under the curve of ROC with t_orth', () => {
-    const auc1 = getAuc(getRocCurve(metadata, predictions[1].array));
+    const auc1: number = getAuc(getRocCurve(metadata, predictions[1].array));
     // iris_auc1 <- multiclass.roc(response = iris[,5], predictor = as.numeric(t_orth), plot = TRUE)
     expect(auc1).toBeCloseTo(0.6608, 4);
   });
 
   it('Area under the curve of ROC with t_pred_cv', () => {
-    const auc2 = getAuc(getRocCurve(metadata, predictions[2].array));
+    const auc2: number = getAuc(getRocCurve(metadata, predictions[2].array));
     // iris_auc2 <- multiclass.roc(response = iris[,5], predictor = as.numeric(t_pred_cv), plot = TRUE)
     expect(auc2).toBeCloseTo(0.8547, 4);
   });
 
   it('Area under the curve of ROC with t_orth_cv', () => {
-    const auc3 = getAuc(getRocCurve(metadata, predictions[3].array));
+    const auc3: number = getAuc(getRocCurve(metadata, predictions[3].array));
     // iris_auc3 <- multiclass.roc(response = iris[,5], predictor = as.numeric(t_orth_cv), plot = TRUE)
     expect(auc3).toBeCloseTo(0.6889, 4);
   });

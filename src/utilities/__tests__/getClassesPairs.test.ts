@@ -1,7 +1,8 @@
+import { ClassType } from '../../../types/Class';
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 
-const categoricalTarget = [
+const categoricalTarget: string[] = [
   'class1',
   'class1',
   'class1',
@@ -18,8 +19,8 @@ const categoricalTarget = [
 
 describe('Get pairs from array of classes', () => {
   it('Get pairs of 3 categories', () => {
-    const classes = getClasses(categoricalTarget);
-    const pairs = getClassesPairs(classes);
+    const classes: ClassType[] = getClasses(categoricalTarget);
+    const pairs: ClassType[][] = getClassesPairs(classes);
     expect(pairs).toStrictEqual([
       [
         { class: 'class1', value: 0, IDs: [0, 1, 2, 3] },

@@ -1,11 +1,13 @@
 import mean from 'ml-array-mean';
 
+import { CurveType } from '../types/Curve';
+
 /**
  * Returns the Area under the curve
  * @param {Object} curve Object containing the true positivie and false positive rate vectors
  * @return {number} Area under the curve
  */
-export function getAuc(curves) {
+export function getAuc(curves: CurveType[]) {
   let result = [];
   for (let array of curves) {
     let area = 0;

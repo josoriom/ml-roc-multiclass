@@ -1,15 +1,17 @@
+import { ClassType } from '../../types/Class';
+
 /**
  * @param {Array<string>} target Array containing category metadata
  * @return {Array<Object>} { class: string, value: number }.
  */
-export function getClasses(array) {
+export function getClasses(array: string[]) {
   let nbClasses = 0;
-  let result = [{ class: array[0], value: 0 }];
-  for (let i = 0; i < array.length; i++) {
-    const currentClass = result.some((item) => item.class === array[i]);
+  let result: ClassType[] = [{ class: array[0], value: 0, IDs: [] }];
+  for (let element of array) {
+    const currentClass = result.some((item) => item.class === element);
     if (!currentClass) {
       nbClasses++;
-      result.push({ class: array[i], value: nbClasses });
+      result.push({ class: element, value: nbClasses, IDs: [] });
     }
   }
 

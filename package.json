@@ -1,33 +1,37 @@
 {
-  "name": "ml-roc-multiclass",
-  "version": "0.0.5",
+  "name": "ml-ml-roc-multiclass",
+  "version": "0.0.0",
   "description": "Classifier",
-  "main": "lib/index.js",
-  "module": "src/index.js",
-  "files": [
-    "lib",
-    "src"
-  ],
-  "scripts": {
-    "eslint": "eslint src",
-    "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "rollup -c",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-coverage": "jest --coverage",
-    "test-only": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/josoriom/ml-roc-multiclass.git"
-  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "keywords": [],
   "author": "Javier Osorio M.",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/josoriom/ml-roc-multiclass/issues"
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "eslint": "eslint src --ext ts --cache",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepublishOnly": "npm run tsc",
+    "test": "npm run test-coverage && npm run eslint",
+    "test-coverage": "npm run test-only -- --coverage",
+    "test-only": "jest",
+    "tsc": "npm run clean && npm run tsc-cjs",
+    "tsc-cjs": "tsc --project tsconfig.cjs.json"
   },
-  "homepage": "https://github.com/josoriom/ml-roc-multiclass#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mljs/ml-roc-multiclass.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mljs/ml-roc-multiclass/issues"
+  },
+  "homepage": "https://github.com/mljs/ml-roc-multiclass#readme",
   "jest": {
+    "preset": "ts-jest",
     "testEnvironment": "node"
   },
   "prettier": {
@@ -38,25 +42,26 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
     "@types/jest": "^26.0.24",
-    "eslint": "^7.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
     "eslint-config-cheminfo": "^5.2.4",
+    "eslint-config-cheminfo-typescript": "^8.0.9",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.6",
     "jest-matcher-deep-close-to": "^2.0.1",
     "prettier": "^2.3.2",
-    "rollup": "^2.53.3"
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.5"
   },
   "dependencies": {
     "ml-array-max": "^1.2.3",
     "ml-array-mean": "^1.1.5",
     "ml-array-min": "^1.2.2",
     "ml-dataset-iris": "^1.1.1"
-  },
-  "directories": {
-    "lib": "lib"
   }
 }

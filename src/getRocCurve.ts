@@ -1,3 +1,5 @@
+import { CurveType } from '../types/Curve';
+
 import { getClasses } from './utilities/getClasses';
 import { getClassesPairs } from './utilities/getClassesPairs';
 import { getNumericalTarget } from './utilities/getNumericalTarget';
@@ -10,7 +12,7 @@ import { getThresholds } from './utilities/getThresholds';
  * @param {Array} prediction Array containing result of regression
  * @return {number}
  */
-export function getRocCurve(response, prediction) {
+export function getRocCurve(response: string[], prediction: number[]) {
   const classes = getClasses(response);
   const pairsOfClasses = getClassesPairs(classes);
   let results = [];
@@ -21,7 +23,7 @@ export function getRocCurve(response, prediction) {
       test,
       pairs,
     );
-    let result = { sensitivities: [], specificities: [] };
+    let result: CurveType = { sensitivities: [], specificities: [] };
     const limits = getThresholds(test);
     for (let limit of limits) {
       let truePositives = 0;

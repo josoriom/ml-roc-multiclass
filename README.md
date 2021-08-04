@@ -18,12 +18,12 @@ A receiver operating characteristic (ROC) curve aims to summarize the performanc
 ## Usage
 
 ```js
-import { roc, auc, getLabelsData } from 'ml-roc-multiclass';
+import { getRocCurve, getAuc, getClasses } from 'ml-roc-multiclass';
 
 const targets = ['class1', 'class1', 'class1', 'class1', 'class2', 'class2', 'class2', 'class2'];
-const predictionResults = [0.95, 0.15, 0.13, 0.08, 0.93, 0.91, 1.99, 0.12];
+const predictions = [0.95, 0.15, 0.13, 0.08, 0.93, 0.91, 1.99, 0.12];
 
-const classes = getLabelsData(targets);
+const classes = getClasses(targets);
 // console.log(classes);
 // [
 //     {
@@ -38,9 +38,9 @@ const classes = getLabelsData(targets);
 //     }
 // ]
 
-const rocCurve = curve(targets, predictionResults);
+const curve = getRocCurve(targets, predictions);
 
-// console.log(rocCurve);
+// console.log(curve);
 
 // [
 //     {
@@ -49,12 +49,12 @@ const rocCurve = curve(targets, predictionResults);
 //     }
 // ]
 
-const areaUnderCurve = auc(rocCurve);
-console.log(areaUnderCurve) // 0.6875
+const auc = getAuc(curve);
+console.log(auc) // 0.6875
 
 ```
 
-## [API Documentation](https://josoriom.github.io/ml-roc-multiclass/)
+## [API Documentation](https://mljs.github.io/ml-roc-multiclass/)
 
 ## References
 * Bewick, V., Cheek, L., & Ball, J. (2004). Statistics review 13: receiver operating characteristic curves. Critical care, 8(6), 1-5.
@@ -67,11 +67,11 @@ console.log(areaUnderCurve) // 0.6875
 
 [MIT](./LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/ml-roc.svg
-[npm-url]: https://www.npmjs.com/package/ml-roc
-[ci-image]: https://github.com/josoriom/ml-roc/workflows/Node.js%20CI/badge.svg?branch=master
-[ci-url]: https://github.com/josoriom/ml-roc/actions?query=workflow%3A%22Node.js+CI%22
-[codecov-image]: https://img.shields.io/codecov/c/github/josoriom/ml-roc.svg
-[codecov-url]: https://codecov.io/gh/josoriom/ml-roc
-[download-image]: https://img.shields.io/npm/dm/ml-roc.svg
-[download-url]: https://www.npmjs.com/package/ml-roc
+[npm-image]: https://img.shields.io/npm/v/ml-roc-multiclass.svg
+[npm-url]: https://www.npmjs.com/package/ml-roc-multiclass
+[ci-image]: https://github.com/mljs/ml-roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-url]: https://github.com/mljs/ml-roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22
+[codecov-image]: https://img.shields.io/codecov/c/github/mljs/ml-roc-multiclass.svg
+[codecov-url]: https://codecov.io/gh/mljs/ml-roc-multiclass
+[download-image]: https://img.shields.io/npm/dm/ml-roc-multiclass.svg
+[download-url]: https://www.npmjs.com/package/ml-roc-multiclass
