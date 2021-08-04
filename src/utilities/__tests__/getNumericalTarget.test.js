@@ -1,7 +1,11 @@
+import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
+
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getNumericalTarget } from '../getNumericalTarget';
 import { getSelectedResults } from '../getSelectedResults';
+
+expect.extend({ toBeDeepCloseTo });
 
 const categoricalTarget = [
   'class1',
@@ -35,17 +39,14 @@ describe('Get numerical targets', () => {
       );
       result.push(target);
     }
-    expect(result[0]).toStrictEqual([
-      0.079, 0.079, 0.079, 0.079, 1.9909999999999999, 1.9909999999999999,
-      1.9909999999999999, 1.9909999999999999,
-    ]);
-    expect(result[1]).toStrictEqual([
-      0.079, 0.079, 0.079, 0.079, 1.9909999999999999, 1.9909999999999999,
-      1.9909999999999999, 1.9909999999999999,
-    ]);
-    expect(result[2]).toStrictEqual([
-      0.119, 0.119, 0.119, 0.119, 1.9909999999999999, 1.9909999999999999,
-      1.9909999999999999, 1.9909999999999999,
-    ]);
+    expect(result[0]).toBeDeepCloseTo([
+      0.079, 0.079, 0.079, 0.079, 1.99, 1.99, 1.99, 1.99,
+    ], 2);
+    expect(result[1]).toBeDeepCloseTo([
+      0.079, 0.079, 0.079, 0.079, 1.99, 1.99, 1.99, 1.99,
+    ], 2);
+    expect(result[2]).toBeDeepCloseTo([
+      0.119, 0.119, 0.119, 0.119, 1.99, 1.99, 1.99, 1.99,
+    ], 2);
   });
 });

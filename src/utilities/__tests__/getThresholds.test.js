@@ -1,7 +1,11 @@
+import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
+
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getSelectedResults } from '../getSelectedResults';
 import { getThresholds } from '../getThresholds';
+
+expect.extend({ toBeDeepCloseTo });
 
 const categoricalTarget = [
   'class1',
@@ -31,15 +35,17 @@ describe('Get pairs from array of classes', () => {
       const test = getSelectedResults(predicted, pairs[i]);
       result.push(getThresholds(test));
     }
-    expect(result[0]).toStrictEqual([
-      0.08, 0.1, 0.125, 0.14, 0.53, 0.92, 0.94, 1.47, 1.9909999999999999,
-    ]);
-    expect(result[1]).toStrictEqual([
-      0.08, 0.10500000000000001, 0.14, 0.5499999999999999, 1.35, 1.8, 1.9, 1.97,
-      1.9909999999999999,
-    ]);
-    expect(result[2]).toStrictEqual([
-      0.12, 0.515, 0.92, 1.34, 1.8, 1.9, 1.97, 1.9909999999999999,
-    ]);
+    expect(result[0]).toBeDeepCloseTo(
+      [0.08, 0.1, 0.125, 0.14, 0.53, 0.92, 0.94, 1.47, 1.99],
+      2,
+    );
+    expect(result[1]).toBeDeepCloseTo(
+      [0.08, 0.1, 0.14, 0.54, 1.35, 1.8, 1.9, 1.97, 1.99],
+      2,
+    );
+    expect(result[2]).toBeDeepCloseTo(
+      [0.12, 0.515, 0.92, 1.34, 1.8, 1.9, 1.97, 1.99],
+      2,
+    );
   });
 });
