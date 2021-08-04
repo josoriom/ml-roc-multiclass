@@ -15,36 +15,37 @@ import { getThresholds } from './utilities/getThresholds';
 export function getRocCurve(response: string[], prediction: number[]) {
   const classes = getClasses(response);
   const pairsOfClasses = getClassesPairs(classes);
-  let results = [];
+  let curves: CurveType[] = [];
   for (let pairs of pairsOfClasses) {
-    const test = getSelectedResults(prediction, pairs);
-    const target = getNumericalTarget(
-      getSelectedResults(response, pairs),
+    const test: number[] = getSelectedResults(prediction, pairs);
+    const target: string[] = getSelectedResults(response, pairs);
+    const numericalTarget: number[] = getNumericalTarget(
+      target,
       test,
       pairs,
     );
-    let result: CurveType = { sensitivities: [], specificities: [] };
+    let curve: CurveType = { sensitivities: [], specificities: [] };
     const limits = getThresholds(test);
     for (let limit of limits) {
       let truePositives = 0;
       let falsePositives = 0;
       let trueNegatives = 0;
       let falseNegatives = 0;
-      for (let j = 0; j < target.length; j++) {
-        if (test[j] > limit && target[j] > limit) truePositives++;
-        if (test[j] >= limit && target[j] <= limit) falsePositives++;
-        if (test[j] < limit && target[j] < limit) trueNegatives++;
-        if (test[j] <= limit && target[j] >= limit) falseNegatives++;
+      for (let j = 0; j < numericalTarget.length; j++) {
+        if (test[j] > limit && numericalTarget[j] > limit) truePositives++;
+        if (test[j] >= limit && numericalTarget[j] <= limit) falsePositives++;
+        if (test[j] < limit && numericalTarget[j] < limit) trueNegatives++;
+        if (test[j] <= limit && numericalTarget[j] >= limit) falseNegatives++;
       }
-      result.sensitivities.push(
+      curve.sensitivities.push(
         truePositives / (truePositives + falseNegatives),
       );
 
-      result.specificities.push(
+      curve.specificities.push(
         trueNegatives / (falsePositives + trueNegatives),
       );
     }
-    results.push(result);
+    curves.push(curve);
   }
-  return results;
+  return curves;
 }
