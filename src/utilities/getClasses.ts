@@ -1,8 +1,8 @@
 import { ClassType } from '../../types/Class';
 
 /**
- * @param {Array<string>} target Array containing category metadata
- * @return {Array<Object>} { class: string, value: number }.
+ * @param {Array<string>} array Array containing category metadata
+ * @return {Array<Object>} { class: string, value: number, IDs: [] }.
  */
 export function getClasses(array: string[]) {
   let nbClasses = 0;

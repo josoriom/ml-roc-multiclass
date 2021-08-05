@@ -7,11 +7,12 @@ import { getSelectedResults } from './utilities/getSelectedResults';
 import { getThresholds } from './utilities/getThresholds';
 
 /**
- * Receiver Operating Characteristic
- * @param {Array} response Array containing category metadata
- * @param {Array} prediction Array containing result of regression
- * @return {number}
+ * Returns a ROC (Receiver Operating Characteristic) curve for a given response and prediction vectors.
+ * @param {Array} response Array containing category metadata.
+ * @param {Array} prediction Array containing result of regression.
+ * @return {Object} { sensitivities: [], specificities: [] }.
  */
+
 export function getRocCurve(response: string[], prediction: number[]) {
   const classes = getClasses(response);
   const pairsOfClasses = getClassesPairs(classes);
