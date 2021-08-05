@@ -9,9 +9,9 @@ import { getThresholds } from './utilities/getThresholds';
 
 /**
  * Returns a ROC (Receiver Operating Characteristic) curve for a given response and prediction vectors.
- * @param {Array} response Array containing category metadata.
- * @param {Array} prediction Array containing result of regression.
- * @return {Object} { sensitivities: [], specificities: [] }.
+ * @param response Array containing category metadata.
+ * @param prediction Array containing result of regression.
+ * @return sensitivities and specificities as a object.
  */
 
 export function getRocCurve(response: string[], prediction: number[]) {
