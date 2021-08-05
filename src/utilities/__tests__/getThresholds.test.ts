@@ -27,7 +27,7 @@ describe('Get pairs from array of classes', () => {
     const classes = getClasses(target);
     const pairs = getClassesPairs(classes);
     const results: number[][] = [];
-    for (let pair of pairs) {
+    for (const pair of pairs) {
       const tests = getSelectedResults(predicted, pair);
       results.push(getThresholds(tests));
     }

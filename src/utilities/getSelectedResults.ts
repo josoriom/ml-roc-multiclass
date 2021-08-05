@@ -10,8 +10,8 @@ import { Class } from '../../types/Class';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getSelectedResults(array: any[], pair: Class[]) {
   const results = [];
-  for (let item of pair) {
-    for (let id of item.ids) {
+  for (const item of pair) {
+    for (const id of item.ids) {
       const result = array[id];
       results.push(result);
     }

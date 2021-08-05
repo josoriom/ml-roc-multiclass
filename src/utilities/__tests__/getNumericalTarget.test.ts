@@ -27,7 +27,7 @@ describe('Get numerical targets', () => {
     const classes = getClasses(targets);
     const pairs = getClassesPairs(classes);
     const results: number[][] = [];
-    for (let pair of pairs) {
+    for (const pair of pairs) {
       const numericalTarget = getNumericalTargets(
         getSelectedResults(targets, pair),
         getSelectedResults(predictions, pair),

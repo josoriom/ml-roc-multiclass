@@ -8,6 +8,7 @@ import { Class } from '../../types/Class';
  * @param target Array containing the categories.
  * @param test Array containing the result of prediction.
  * @param pair Object with information about two classes.
+ * @param [options={}]
  * @return Array containing the categories assinged as numbers.
  */
 
@@ -31,6 +32,9 @@ export function getNumericalTargets(
   return results;
 }
 
+/**
+ * @param {number} [options.dx = 0.001] - small amount to add or subtract in order to take in count all posibilities.
+ */
 interface Options {
   dx?: number;
 }

@@ -10,7 +10,7 @@ import { Curve } from '../types/Curve';
 
 export function getAuc(curves: Curve[]) {
   const auc: number[] = [];
-  for (let curve of curves) {
+  for (const curve of curves) {
     let area = 0;
     const x = curve.specificities;
     const y = curve.sensitivities;

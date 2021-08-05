@@ -17,13 +17,13 @@ export function getRocCurve(response: string[], predictions: number[]) {
   const classes = getClasses(response);
   const pairsOfClasses = getClassesPairs(classes);
   const curves: Curve[] = [];
-  for (let pairs of pairsOfClasses) {
+  for (const pairs of pairsOfClasses) {
     const tests = getSelectedResults(predictions, pairs);
     const targets = getSelectedResults(response, pairs);
     const numericalTargets = getNumericalTargets(targets, tests, pairs);
     const curve: Curve = { sensitivities: [], specificities: [] };
     const limits = getThresholds(tests);
-    for (let limit of limits) {
+    for (const limit of limits) {
       let truePositives = 0;
       let falsePositives = 0;
       let trueNegatives = 0;
