@@ -26,39 +26,39 @@ describe('Get pairs from array of classes', () => {
   it('Get classes from categorical targets', () => {
     const classes = getClasses(target);
     const pairs = getClassesPairs(classes);
-    const result: number[][] = [];
+    const results: number[][] = [];
     for (let pair of pairs) {
-      const test = getSelectedResults(predicted, pair);
-      result.push(getThresholds(test));
+      const tests = getSelectedResults(predicted, pair);
+      results.push(getThresholds(tests));
     }
 
-    expect(result[0][0]).toBeCloseTo(0.08);
-    expect(result[0][1]).toBeCloseTo(0.1);
-    expect(result[0][2]).toBeCloseTo(0.125);
-    expect(result[0][3]).toBeCloseTo(0.14);
-    expect(result[0][4]).toBeCloseTo(0.53);
-    expect(result[0][5]).toBeCloseTo(0.92);
-    expect(result[0][6]).toBeCloseTo(0.94);
-    expect(result[0][7]).toBeCloseTo(1.47);
-    expect(result[0][8]).toBeCloseTo(1.99);
+    expect(results[0][0]).toBeCloseTo(0.08);
+    expect(results[0][1]).toBeCloseTo(0.1);
+    expect(results[0][2]).toBeCloseTo(0.125);
+    expect(results[0][3]).toBeCloseTo(0.14);
+    expect(results[0][4]).toBeCloseTo(0.53);
+    expect(results[0][5]).toBeCloseTo(0.92);
+    expect(results[0][6]).toBeCloseTo(0.94);
+    expect(results[0][7]).toBeCloseTo(1.47);
+    expect(results[0][8]).toBeCloseTo(1.99);
 
-    expect(result[1][0]).toBeCloseTo(0.08);
-    expect(result[1][1]).toBeCloseTo(0.105);
-    expect(result[1][2]).toBeCloseTo(0.14);
-    expect(result[1][3]).toBeCloseTo(0.549);
-    expect(result[1][4]).toBeCloseTo(1.35);
-    expect(result[1][5]).toBeCloseTo(1.8);
-    expect(result[1][6]).toBeCloseTo(1.9);
-    expect(result[1][7]).toBeCloseTo(1.97);
-    expect(result[1][8]).toBeCloseTo(1.99);
+    expect(results[1][0]).toBeCloseTo(0.08);
+    expect(results[1][1]).toBeCloseTo(0.105);
+    expect(results[1][2]).toBeCloseTo(0.14);
+    expect(results[1][3]).toBeCloseTo(0.549);
+    expect(results[1][4]).toBeCloseTo(1.35);
+    expect(results[1][5]).toBeCloseTo(1.8);
+    expect(results[1][6]).toBeCloseTo(1.9);
+    expect(results[1][7]).toBeCloseTo(1.97);
+    expect(results[1][8]).toBeCloseTo(1.99);
 
-    expect(result[2][0]).toBeCloseTo(0.12);
-    expect(result[2][1]).toBeCloseTo(0.515);
-    expect(result[2][2]).toBeCloseTo(0.92);
-    expect(result[2][3]).toBeCloseTo(1.34);
-    expect(result[2][4]).toBeCloseTo(1.8);
-    expect(result[2][5]).toBeCloseTo(1.9);
-    expect(result[2][6]).toBeCloseTo(1.97);
-    expect(result[2][7]).toBeCloseTo(1.99);
+    expect(results[2][0]).toBeCloseTo(0.12);
+    expect(results[2][1]).toBeCloseTo(0.515);
+    expect(results[2][2]).toBeCloseTo(0.92);
+    expect(results[2][3]).toBeCloseTo(1.34);
+    expect(results[2][4]).toBeCloseTo(1.8);
+    expect(results[2][5]).toBeCloseTo(1.9);
+    expect(results[2][6]).toBeCloseTo(1.97);
+    expect(results[2][7]).toBeCloseTo(1.99);
   });
 });

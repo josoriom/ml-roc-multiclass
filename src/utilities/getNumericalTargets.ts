@@ -11,7 +11,7 @@ import { Class } from '../../types/Class';
  * @return Array containing the categories assinged as numbers.
  */
 
-export function getNumericalTarget(
+export function getNumericalTargets(
   targets: string[],
   tests: number[],
   pair: [Class, Class],

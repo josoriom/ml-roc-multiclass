@@ -16,8 +16,8 @@ export function getClasses(array: string[]) {
   }
 
   for (let category of classes) {
-    let label: string = category.name;
-    let indexes: number[] = [];
+    const label = category.name;
+    const indexes: number[] = [];
     for (let j = 0; j < array.length; j++) {
       if (array[j] === label) indexes.push(j);
     }
