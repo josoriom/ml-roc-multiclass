@@ -1,10 +1,9 @@
-import { Class } from '../../../types/Class';
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getNumericalTarget } from '../getNumericalTarget';
 import { getSelectedResults } from '../getSelectedResults';
 
-const target: string[] = [
+const target = [
   'class1',
   'class1',
   'class1',
@@ -19,17 +18,17 @@ const target: string[] = [
   'class3',
 ];
 
-const predicted: number[] = [
+const predicted = [
   0.95, 0.15, 0.13, 0.08, 0.93, 0.91, 1.99, 0.12, 1.85, 1.95, 1.75, 1.99,
 ];
 
 describe('Get numerical targets', () => {
   it('Get targets', () => {
-    const classes: Class[] = getClasses(target);
-    const pairs: [Class, Class][] = getClassesPairs(classes);
+    const classes = getClasses(target);
+    const pairs = getClassesPairs(classes);
     let result: number[][] = [];
     for (let pair of pairs) {
-      const numericalTarget: number[] = getNumericalTarget(
+      const numericalTarget = getNumericalTarget(
         getSelectedResults(target, pair),
         getSelectedResults(predicted, pair),
         pair,

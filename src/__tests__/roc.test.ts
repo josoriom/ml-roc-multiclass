@@ -1,5 +1,3 @@
-import { Class } from '../../types/Class';
-import { Curve } from '../../types/Curve';
 import { getAuc } from '../getAuc';
 import { getRocCurve } from '../getRocCurve';
 import { getClasses } from '../utilities/getClasses';
@@ -19,7 +17,7 @@ describe('Roc curve to coffee samples (Two classes)', () => {
   const predicted = [0.95, 0.15, 0.13, 0.08, 0.93, 0.91, 0.99, 0.12];
 
   it('Get classes from metadata', () => {
-    const classes: Class[] = getClasses(target);
+    const classes = getClasses(target);
     expect(classes).toStrictEqual([
       { name: 'class1', value: 0, ids: [0, 1, 2, 3] },
       { name: 'class2', value: 1, ids: [4, 5, 6, 7] },
@@ -27,7 +25,7 @@ describe('Roc curve to coffee samples (Two classes)', () => {
   });
 
   it('Receiver Operating Characteristic (Categorical target)', () => {
-    const curve: Curve[] = getRocCurve(target, predicted);
+    const curve = getRocCurve(target, predicted);
     expect(curve).toStrictEqual([
       {
         sensitivities: [1, 1, 0.75, 0.75, 0.75, 0.5, 0.25, 0.25, 0],
@@ -37,7 +35,7 @@ describe('Roc curve to coffee samples (Two classes)', () => {
   });
 
   it('Area under the curve of ROC (Categorical target)', () => {
-    const auc: number = getAuc(getRocCurve(target, predicted));
+    const auc = getAuc(getRocCurve(target, predicted));
     expect(auc).toStrictEqual(0.6875);
   });
 });

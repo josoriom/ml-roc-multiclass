@@ -15,7 +15,6 @@ export function getNumericalTarget(
   targets: string[],
   tests: number[],
   pair: [Class, Class],
-  // pair: Class[],
   options: Options = {},
 ) {
   const { dx = 0.001 } = options;
