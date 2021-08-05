@@ -8,18 +8,18 @@ import { getThresholds } from './utilities/getThresholds';
 
 /**
  * Returns a ROC (Receiver Operating Characteristic) curve for a given response and prediction vectors.
- * @param response Array containing category metadata.
+ * @param responses Array containing category metadata.
  * @param predictions Array containing the results of regression.
  * @return sensitivities and specificities as a object.
  */
 
-export function getRocCurve(response: string[], predictions: number[]) {
-  const classes = getClasses(response);
+export function getRocCurve(responses: string[], predictions: number[]) {
+  const classes = getClasses(responses);
   const pairsOfClasses = getClassesPairs(classes);
   const curves: Curve[] = [];
   for (const pairs of pairsOfClasses) {
     const tests = getSelectedResults(predictions, pairs);
-    const targets = getSelectedResults(response, pairs);
+    const targets = getSelectedResults(responses, pairs);
     const numericalTargets = getNumericalTargets(targets, tests, pairs);
     const curve: Curve = { sensitivities: [], specificities: [] };
     const limits = getThresholds(tests);

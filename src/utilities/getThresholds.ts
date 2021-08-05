@@ -1,11 +1,11 @@
 /**
  * Returns an array of thresholds to build the curve.
- * @param prediction Array of predictions.
+ * @param predictions Array of predictions.
  * @return An array of thresholds.
  */
 
-export function getThresholds(prediction: number[]) {
-  const uniques: number[] = [...new Set(prediction)].sort((a, b) => a - b);
+export function getThresholds(predictions: number[]) {
+  const uniques: number[] = [...new Set(predictions)].sort((a, b) => a - b);
   const thresholds: number[] = [uniques[0]];
   for (let i = 0; i < uniques.length - 1; i++) {
     const half = (uniques[i + 1] - uniques[i]) / 2;

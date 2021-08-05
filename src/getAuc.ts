@@ -4,7 +4,7 @@ import { Curve } from '../types/Curve';
 
 /**
  * Returns the Area under the curve.
- * @param curve Object containing the true positivie and false positive rate vectors.
+ * @param curves Object containing the true positivie and false positive rate vectors.
  * @return Area under the curve.
  */
 

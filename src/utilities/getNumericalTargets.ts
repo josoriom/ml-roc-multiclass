@@ -5,8 +5,8 @@ import { Class } from '../../types/Class';
 
 /**
  * Returns the array of metadata numerically categorized.
- * @param target Array containing the categories.
- * @param test Array containing the result of prediction.
+ * @param targets Array containing the categories.
+ * @param tests Array containing the result of prediction.
  * @param pair Object with information about two classes.
  * @param [options={}]
  * @return Array containing the categories assinged as numbers.
