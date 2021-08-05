@@ -1,4 +1,4 @@
-import { ClassType } from '../../../types/Class';
+import { Class } from '../../../types/Class';
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getNumericalTarget } from '../getNumericalTarget';
@@ -25,8 +25,8 @@ const predicted: number[] = [
 
 describe('Get numerical targets', () => {
   it('Get targets', () => {
-    const classes: ClassType[] = getClasses(target);
-    const pairs: ClassType[][] = getClassesPairs(classes);
+    const classes: Class[] = getClasses(target);
+    const pairs: [Class, Class][] = getClassesPairs(classes);
     let result: number[][] = [];
     for (let pair of pairs) {
       const numericalTarget: number[] = getNumericalTarget(

@@ -1,6 +1,6 @@
 import mean from 'ml-array-mean';
 
-import { CurveType } from '../types/Curve';
+import { Curve } from '../types/Curve';
 
 /**
  * Returns the Area under the curve.
@@ -8,17 +8,17 @@ import { CurveType } from '../types/Curve';
  * @return {number} Area under the curve.
  */
 
-export function getAuc(curves: CurveType[]) {
-  let result: number[] = [];
-  for (let array of curves) {
+export function getAuc(curves: Curve[]) {
+  const auc: number[] = [];
+  for (let curve of curves) {
     let area = 0;
-    const x = array.specificities;
-    const y = array.sensitivities;
+    const x = curve.specificities;
+    const y = curve.sensitivities;
     for (let i = 1; i < x.length; i++) {
       area += 0.5 * (x[i] - x[i - 1]) * (y[i] + y[i - 1]);
     }
     area = area > 0.5 ? area : 1 - area;
-    result.push(area);
+    auc.push(area);
   }
-  return mean(result);
+  return mean(auc);
 }

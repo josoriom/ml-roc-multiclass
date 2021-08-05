@@ -29,12 +29,12 @@ const classes = getClasses(targets);
 //     {
 //         "class":"class1",
 //         "value":0,
-//         "IDs":[0,1,2,3]
+//         "ids":[0,1,2,3]
 //     },
 //     {
 //         "class":"class2",
 //         "value":1,
-//         "IDs":[4,5,6,7]
+//         "ids":[4,5,6,7]
 //     }
 // ]
 

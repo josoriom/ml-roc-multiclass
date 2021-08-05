@@ -1,4 +1,4 @@
-import { ClassType } from '../../../types/Class';
+import { Class } from '../../../types/Class';
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getSelectedResults } from '../getSelectedResults';
@@ -25,8 +25,8 @@ const predicted: number[] = [
 
 describe('Get pairs from array of classes', () => {
   it('Get classes from categorical targets', () => {
-    const classes: ClassType[] = getClasses(target);
-    const pairs: ClassType[][] = getClassesPairs(classes);
+    const classes: Class[] = getClasses(target);
+    const pairs: Class[][] = getClassesPairs(classes);
     const result: number[][] = [];
     for (let pair of pairs) {
       const test: number[] = getSelectedResults(predicted, pair);

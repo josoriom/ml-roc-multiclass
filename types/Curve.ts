@@ -1,4 +1,4 @@
-export interface CurveType {
+export interface Curve {
   sensitivities: number[];
   specificities: number[];
 }

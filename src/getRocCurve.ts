@@ -1,4 +1,5 @@
-import { CurveType } from '../types/Curve';
+import { Class } from '../types/Class';
+import { Curve } from '../types/Curve';
 
 import { getClasses } from './utilities/getClasses';
 import { getClassesPairs } from './utilities/getClassesPairs';
@@ -14,19 +15,15 @@ import { getThresholds } from './utilities/getThresholds';
  */
 
 export function getRocCurve(response: string[], prediction: number[]) {
-  const classes = getClasses(response);
-  const pairsOfClasses = getClassesPairs(classes);
-  let curves: CurveType[] = [];
+  const classes: Class[] = getClasses(response);
+  const pairsOfClasses: [Class, Class][] = getClassesPairs(classes);
+  const curves: Curve[] = [];
   for (let pairs of pairsOfClasses) {
     const test: number[] = getSelectedResults(prediction, pairs);
     const target: string[] = getSelectedResults(response, pairs);
-    const numericalTarget: number[] = getNumericalTarget(
-      target,
-      test,
-      pairs,
-    );
-    let curve: CurveType = { sensitivities: [], specificities: [] };
-    const limits = getThresholds(test);
+    const numericalTarget: number[] = getNumericalTarget(target, test, pairs);
+    const curve: Curve = { sensitivities: [], specificities: [] };
+    const limits: number[] = getThresholds(test);
     for (let limit of limits) {
       let truePositives = 0;
       let falsePositives = 0;

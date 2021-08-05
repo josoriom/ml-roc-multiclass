@@ -1,4 +1,4 @@
-import { ClassType } from '../../../types/Class';
+import { Class } from '../../../types/Class';
 import { getClasses } from '../getClasses';
 
 const target: string[] = [
@@ -18,11 +18,11 @@ const target: string[] = [
 
 describe('Roc curve (Three classes)', () => {
   it('Get classes', () => {
-    const classes: ClassType[] = getClasses(target);
+    const classes: Class[] = getClasses(target);
     expect(classes).toStrictEqual([
-      { class: 'class1', value: 0, IDs: [0, 1, 2, 3] },
-      { class: 'class2', value: 1, IDs: [4, 5, 6, 7] },
-      { class: 'class3', value: 2, IDs: [8, 9, 10, 11] },
+      { name: 'class1', value: 0, ids: [0, 1, 2, 3] },
+      { name: 'class2', value: 1, ids: [4, 5, 6, 7] },
+      { name: 'class3', value: 2, ids: [8, 9, 10, 11] },
     ]);
   });
 });
