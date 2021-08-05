@@ -33,7 +33,7 @@ export function getNumericalTargets(
 }
 
 /**
- * @param {number} [options.dx = 0.001] - small amount to add or subtract in order to take in count all posibilities.
+ * @default options.dx [0.001]
  */
 interface Options {
   dx?: number;
