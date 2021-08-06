@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ml-roc-multiclass</title>
+	<meta name="description" content="Documentation for ml-roc-multiclass">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ml-roc-multiclass</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>ml-roc-multiclass</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#roc---receiver-operating-characteristic-for-multiple-class" id="roc---receiver-operating-characteristic-for-multiple-class" style="color: inherit; text-decoration: none;">
+					<h1>ROC - Receiver Operating Characteristic for multiple class</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/ml-roc-multiclass"><img src="https://img.shields.io/npm/v/ml-roc-multiclass.svg" alt="NPM version"></a>
+					<a href="https://github.com/mljs/ml-roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/mljs/ml-roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master" alt="build status"></a>
+					<a href="https://codecov.io/gh/mljs/ml-roc-multiclass"><img src="https://img.shields.io/codecov/c/github/mljs/ml-roc-multiclass.svg" alt="Test coverage"></a>
+				<a href="https://www.npmjs.com/package/ml-roc-multiclass"><img src="https://img.shields.io/npm/dm/ml-roc-multiclass.svg" alt="npm download"></a></p>
+				<p>A receiver operating characteristic (ROC) curve aims to summarize the performance of a binary classifier system as its discrimination threshold is varied. The multiple class option allows to handle systems with more than two classes.</p>
+				<p align="center">
+					<img src="image/readme-example.png">
+				</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p><code>$ npm i ml-roc-multiclass</code></p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">getRocCurve</span><span style="color: #000000">, </span><span style="color: #001080">getAuc</span><span style="color: #000000">, </span><span style="color: #001080">getClasses</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;ml-roc-multiclass&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">targets</span><span style="color: #000000"> = [</span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">];</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">predictions</span><span style="color: #000000"> = [</span><span style="color: #098658">0.95</span><span style="color: #000000">, </span><span style="color: #098658">0.15</span><span style="color: #000000">, </span><span style="color: #098658">0.13</span><span style="color: #000000">, </span><span style="color: #098658">0.08</span><span style="color: #000000">, </span><span style="color: #098658">0.93</span><span style="color: #000000">, </span><span style="color: #098658">0.91</span><span style="color: #000000">, </span><span style="color: #098658">1.99</span><span style="color: #000000">, </span><span style="color: #098658">0.12</span><span style="color: #000000">];</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">classes</span><span style="color: #000000"> = </span><span style="color: #795E26">getClasses</span><span style="color: #000000">(</span><span style="color: #001080">targets</span><span style="color: #000000">);</span>
+<span style="color: #008000">// console.log(classes);</span>
+<span style="color: #008000">// [</span>
+<span style="color: #008000">//     {</span>
+<span style="color: #008000">//         &quot;class&quot;:&quot;class1&quot;,</span>
+<span style="color: #008000">//         &quot;value&quot;:0,</span>
+<span style="color: #008000">//         &quot;ids&quot;:[0,1,2,3]</span>
+<span style="color: #008000">//     },</span>
+<span style="color: #008000">//     {</span>
+<span style="color: #008000">//         &quot;class&quot;:&quot;class2&quot;,</span>
+<span style="color: #008000">//         &quot;value&quot;:1,</span>
+<span style="color: #008000">//         &quot;ids&quot;:[4,5,6,7]</span>
+<span style="color: #008000">//     }</span>
+<span style="color: #008000">// ]</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">curve</span><span style="color: #000000"> = </span><span style="color: #795E26">getRocCurve</span><span style="color: #000000">(</span><span style="color: #001080">targets</span><span style="color: #000000">, </span><span style="color: #001080">predictions</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// console.log(curve);</span>
+
+<span style="color: #008000">// [</span>
+<span style="color: #008000">//     {</span>
+<span style="color: #008000">//         &quot;sensitivities&quot;: [1, 1, 0.75, 0.75, 0.75, 0.5, 0.25, 0.25, 0],</span>
+<span style="color: #008000">//         &quot;specificities&quot;: [0, 0.25, 0.25, 0.5, 0.75, 0.75, 0.75, 1, 1]</span>
+<span style="color: #008000">//     }</span>
+<span style="color: #008000">// ]</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">auc</span><span style="color: #000000"> = </span><span style="color: #795E26">getAuc</span><span style="color: #000000">(</span><span style="color: #001080">curve</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">auc</span><span style="color: #000000">) </span><span style="color: #008000">// 0.6875</span>
+
+</code></pre>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2><a href="https://mljs.github.io/ml-roc-multiclass/">API Documentation</a></h2>
+				</a>
+				<a href="#references" id="references" style="color: inherit; text-decoration: none;">
+					<h2>References</h2>
+				</a>
+				<ul>
+					<li><p>Bewick, V., Cheek, L., &amp; Ball, J. (2004). Statistics review 13: receiver operating characteristic curves. Critical care, 8(6), 1-5.</p>
+					</li>
+					<li><p>Hand, D. J., &amp; Till, R. J. (2001). A simple generalisation of the area under the ROC curve for multiple class classification problems. Machine learning, 45(2), 171-186.</p>
+					</li>
+					<li><p><a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">https://en.wikipedia.org/wiki/Receiver_operating_characteristic</a>.</p>
+					</li>
+				</ul>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="./LICENSE">MIT</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getAuc" class="tsd-kind-icon">get<wbr>Auc</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getClasses" class="tsd-kind-icon">get<wbr>Classes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getRocCurve" class="tsd-kind-icon">get<wbr>Roc<wbr>Curve</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
