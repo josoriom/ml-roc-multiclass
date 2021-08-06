@@ -1,4 +1,4 @@
-import { Class } from '../../types/Class';
+import { Class } from '../types/Class';
 
 /**
  * Returns the array of metadata numerically categorized.

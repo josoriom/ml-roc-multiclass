@@ -1,4 +1,4 @@
-import { Class } from '../../types/Class';
+import { Class } from '../types/Class';
 
 /**
  * Returns an array of pairs of classes.

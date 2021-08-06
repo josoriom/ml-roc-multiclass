@@ -1,6 +1,6 @@
 import mean from 'ml-array-mean';
 
-import { Curve } from '../types/Curve';
+import { Curve } from './types/Curve';
 
 /**
  * Returns the Area under the curve.

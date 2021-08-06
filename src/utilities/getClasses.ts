@@ -1,4 +1,4 @@
-import { Class } from '../../types/Class';
+import { Class } from '../types/Class';
 
 /**
  * @param array Array containing category metadata

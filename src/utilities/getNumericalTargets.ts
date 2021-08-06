@@ -1,7 +1,7 @@
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 
-import { Class } from '../../types/Class';
+import { Class } from '../types/Class';
 
 /**
  * Returns the array of metadata numerically categorized.

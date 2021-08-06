@@ -1,5 +1,4 @@
-import { Curve } from '../types/Curve';
-
+import { Curve } from './types/Curve';
 import { getClasses } from './utilities/getClasses';
 import { getClassesPairs } from './utilities/getClassesPairs';
 import { getNumericalTargets } from './utilities/getNumericalTargets';
