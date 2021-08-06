@@ -61,10 +61,10 @@
 				<a href="#roc---receiver-operating-characteristic-for-multiple-class" id="roc---receiver-operating-characteristic-for-multiple-class" style="color: inherit; text-decoration: none;">
 					<h1>ROC - Receiver Operating Characteristic for multiple class</h1>
 				</a>
-				<p><a href="https://www.npmjs.com/package/ml-roc-multiclass"><img src="https://img.shields.io/npm/v/ml-roc-multiclass.svg" alt="NPM version"></a>
-					<a href="https://github.com/mljs/ml-roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/mljs/ml-roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master" alt="build status"></a>
-					<a href="https://codecov.io/gh/mljs/ml-roc-multiclass"><img src="https://img.shields.io/codecov/c/github/mljs/ml-roc-multiclass.svg" alt="Test coverage"></a>
-				<a href="https://www.npmjs.com/package/ml-roc-multiclass"><img src="https://img.shields.io/npm/dm/ml-roc-multiclass.svg" alt="npm download"></a></p>
+				<p><a href="https://www.npmjs.com/package/roc-multiclass"><img src="https://img.shields.io/npm/v/roc-multiclass.svg" alt="NPM version"></a>
+					<a href="https://github.com/mljs/roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/mljs/roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master" alt="build status"></a>
+					<a href="https://codecov.io/gh/mljs/roc-multiclass"><img src="https://img.shields.io/codecov/c/github/mljs/roc-multiclass.svg" alt="Test coverage"></a>
+				<a href="https://www.npmjs.com/package/roc-multiclass"><img src="https://img.shields.io/npm/dm/roc-multiclass.svg" alt="npm download"></a></p>
 				<p>A receiver operating characteristic (ROC) curve aims to summarize the performance of a binary classifier system as its discrimination threshold is varied. The multiple class option allows to handle systems with more than two classes.</p>
 				<p align="center">
 					<img src="image/readme-example.png">
@@ -78,7 +78,16 @@
 				</a>
 				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">getRocCurve</span><span style="color: #000000">, </span><span style="color: #001080">getAuc</span><span style="color: #000000">, </span><span style="color: #001080">getClasses</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;ml-roc-multiclass&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">targets</span><span style="color: #000000"> = [</span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">];</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">targets</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;class2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">];</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">predictions</span><span style="color: #000000"> = [</span><span style="color: #098658">0.95</span><span style="color: #000000">, </span><span style="color: #098658">0.15</span><span style="color: #000000">, </span><span style="color: #098658">0.13</span><span style="color: #000000">, </span><span style="color: #098658">0.08</span><span style="color: #000000">, </span><span style="color: #098658">0.93</span><span style="color: #000000">, </span><span style="color: #098658">0.91</span><span style="color: #000000">, </span><span style="color: #098658">1.99</span><span style="color: #000000">, </span><span style="color: #098658">0.12</span><span style="color: #000000">];</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">classes</span><span style="color: #000000"> = </span><span style="color: #795E26">getClasses</span><span style="color: #000000">(</span><span style="color: #001080">targets</span><span style="color: #000000">);</span>
@@ -108,11 +117,10 @@
 <span style="color: #008000">// ]</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">auc</span><span style="color: #000000"> = </span><span style="color: #795E26">getAuc</span><span style="color: #000000">(</span><span style="color: #001080">curve</span><span style="color: #000000">);</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">auc</span><span style="color: #000000">) </span><span style="color: #008000">// 0.6875</span>
-
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">auc</span><span style="color: #000000">); </span><span style="color: #008000">// 0.6875</span>
 </code></pre>
 				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
-					<h2><a href="https://mljs.github.io/ml-roc-multiclass/">API Documentation</a></h2>
+					<h2><a href="https://mljs.github.io/roc-multiclass/">API Documentation</a></h2>
 				</a>
 				<a href="#references" id="references" style="color: inherit; text-decoration: none;">
 					<h2>References</h2>
