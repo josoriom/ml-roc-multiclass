@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mljs/ml-roc-multiclass.git"
+    "url": "git+https://github.com/mljs/roc-multiclass.git"
   },
   "bugs": {
-    "url": "https://github.com/mljs/ml-roc-multiclass/issues"
+    "url": "https://github.com/mljs/roc-multiclass/issues"
   },
-  "homepage": "https://github.com/mljs/ml-roc-multiclass#readme",
+  "homepage": "https://github.com/mljs/roc-multiclass#readme",
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
