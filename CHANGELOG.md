@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/mljs/roc-multiclass/compare/v0.1.0...v0.1.1) (2021-08-06)
+
+
+### Bug Fixes
+
+* move type definition in src folder ([7566ba0](https://www.github.com/mljs/roc-multiclass/commit/7566ba09e8a1c7af1612c45b5d2402319aca29ff))
+
 ## 0.1.0 (2021-08-06)
 
 ### Features
