@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/mljs/roc-multiclass/compare/v0.1.1...v0.2.0) (2021-08-14)
+
+
+### Features
+
+* add larges test case ([0b00693](https://www.github.com/mljs/roc-multiclass/commit/0b00693ac3d518bb8b4a5c2fbf6b7d4d7057388c))
+
 ### [0.1.1](https://www.github.com/mljs/roc-multiclass/compare/v0.1.0...v0.1.1) (2021-08-06)
 
 
