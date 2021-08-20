@@ -78,9 +78,9 @@ console.log(auc); // 0.6875
 
 [npm-image]: https://img.shields.io/npm/v/ml-roc-multiclass.svg
 [npm-url]: https://www.npmjs.com/package/ml-roc-multiclass
-[ci-image]: https://github.com/mljs/ml-roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master
-[ci-url]: https://github.com/mljs/ml-roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22
-[codecov-image]: https://img.shields.io/codecov/c/github/mljs/ml-roc-multiclass.svg
-[codecov-url]: https://codecov.io/gh/mljs/ml-roc-multiclass
+[ci-image]: https://github.com/mljs/roc-multiclass/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-url]: https://github.com/mljs/roc-multiclass/actions?query=workflow%3A%22Node.js+CI%22
+[codecov-image]: https://img.shields.io/codecov/c/github/mljs/roc-multiclass.svg
+[codecov-url]: https://codecov.io/gh/mljs/roc-multiclass
 [download-image]: https://img.shields.io/npm/dm/ml-roc-multiclass.svg
 [download-url]: https://www.npmjs.com/package/ml-roc-multiclass

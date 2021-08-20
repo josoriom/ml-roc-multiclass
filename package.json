@@ -41,17 +41,18 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.1",
     "eslint": "^7.32.0",
     "eslint-config-cheminfo-typescript": "^8.0.9",
     "jest": "^27.0.6",
+    "ml-dataset-iris": "^1.1.1",
     "prettier": "2.3.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5",
-    "ml-dataset-iris": "^1.1.1"
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.3.5"
   },
   "dependencies": {
+    "jest-matcher-deep-close-to": "^2.0.1",
     "ml-array-max": "^1.2.3",
     "ml-array-mean": "^1.1.5",
     "ml-array-min": "^1.2.2"

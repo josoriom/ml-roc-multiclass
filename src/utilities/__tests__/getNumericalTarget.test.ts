@@ -1,7 +1,11 @@
+import { toBeDeepCloseTo } from 'jest-matcher-deep-close-to';
+
 import { getClasses } from '../getClasses';
 import { getClassesPairs } from '../getClassesPairs';
 import { getNumericalTargets } from '../getNumericalTargets';
 import { getSelectedResults } from '../getSelectedResults';
+
+expect.extend({ toBeDeepCloseTo });
 
 const targets = [
   'class1',
@@ -36,31 +40,19 @@ describe('Get numerical targets', () => {
       results.push(numericalTarget);
     }
 
-    expect(results[0][0]).toBeCloseTo(0.079);
-    expect(results[0][1]).toBeCloseTo(0.079);
-    expect(results[0][2]).toBeCloseTo(0.079);
-    expect(results[0][3]).toBeCloseTo(0.079);
-    expect(results[0][4]).toBeCloseTo(1.99);
-    expect(results[0][5]).toBeCloseTo(1.99);
-    expect(results[0][6]).toBeCloseTo(1.99);
-    expect(results[0][7]).toBeCloseTo(1.99);
+    expect(results[0]).toBeDeepCloseTo(
+      [0.079, 0.079, 0.079, 0.079, 1.991, 1.991, 1.991, 1.991],
+      3,
+    );
 
-    expect(results[1][0]).toBeCloseTo(0.079);
-    expect(results[1][1]).toBeCloseTo(0.079);
-    expect(results[1][2]).toBeCloseTo(0.079);
-    expect(results[1][3]).toBeCloseTo(0.079);
-    expect(results[1][4]).toBeCloseTo(1.99);
-    expect(results[1][5]).toBeCloseTo(1.99);
-    expect(results[1][6]).toBeCloseTo(1.99);
-    expect(results[1][7]).toBeCloseTo(1.99);
+    expect(results[1]).toBeDeepCloseTo(
+      [0.079, 0.079, 0.079, 0.079, 1.991, 1.991, 1.991, 1.991],
+      3,
+    );
 
-    expect(results[2][0]).toBeCloseTo(0.119);
-    expect(results[2][1]).toBeCloseTo(0.119);
-    expect(results[2][2]).toBeCloseTo(0.119);
-    expect(results[2][3]).toBeCloseTo(0.119);
-    expect(results[2][4]).toBeCloseTo(1.99);
-    expect(results[2][5]).toBeCloseTo(1.99);
-    expect(results[2][6]).toBeCloseTo(1.99);
-    expect(results[2][7]).toBeCloseTo(1.99);
+    expect(results[2]).toBeDeepCloseTo(
+      [0.119, 0.119, 0.119, 0.119, 1.991, 1.991, 1.991, 1.991],
+      3,
+    );
   });
 });
