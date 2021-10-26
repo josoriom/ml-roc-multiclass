@@ -36,6 +36,6 @@ describe('Roc curve to coffee samples (Two classes)', () => {
 
   it('Area under the curve of ROC (Categorical target)', () => {
     const auc = getAuc(getRocCurve(targets, predictions));
-    expect(auc).toStrictEqual(0.6875);
+    expect(auc).toBe(0.6875);
   });
 });
