@@ -14,4 +14,3 @@ export function getThresholds(predictions: number[]) {
   thresholds.push(Number.POSITIVE_INFINITY);
   return thresholds;
 }
-
