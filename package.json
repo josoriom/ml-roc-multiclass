@@ -1,6 +1,6 @@
 {
   "name": "ml-roc-multiclass",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Binary classifier system for multiple categories",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
