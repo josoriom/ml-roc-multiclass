@@ -6,11 +6,11 @@
 
 export function getThresholds(predictions: number[]) {
   const uniques: number[] = [...new Set(predictions)].sort((a, b) => a - b);
-  const thresholds: number[] = [uniques[0]];
+  const thresholds: number[] = [Number.NEGATIVE_INFINITY];
   for (let i = 0; i < uniques.length - 1; i++) {
     const half = (uniques[i + 1] - uniques[i]) / 2;
     thresholds.push(uniques[i] + half);
   }
-  thresholds.push(uniques[uniques.length - 1] + 0.001);
+  thresholds.push(Number.POSITIVE_INFINITY);
   return thresholds;
 }

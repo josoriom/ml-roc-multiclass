@@ -1,9 +1,8 @@
+import { getBinaryClassifiers } from './getBinaryClassifiers';
 import { Curve } from './types/Curve';
 import { getClasses } from './utilities/getClasses';
 import { getClassesPairs } from './utilities/getClassesPairs';
-import { getNumericalTargets } from './utilities/getNumericalTargets';
 import { getSelectedResults } from './utilities/getSelectedResults';
-import { getThresholds } from './utilities/getThresholds';
 
 /**
  * Returns a ROC (Receiver Operating Characteristic) curve for a given response and prediction vectors.
@@ -19,26 +18,17 @@ export function getRocCurve(responses: string[], predictions: number[]) {
   for (const pairs of pairsOfClasses) {
     const tests = getSelectedResults(predictions, pairs);
     const targets = getSelectedResults(responses, pairs);
-    const numericalTargets = getNumericalTargets(targets, tests, pairs);
+    const { truePositives, falsePositives, trueNegatives, falseNegatives } =
+      getBinaryClassifiers(targets, tests);
+
     const curve: Curve = { sensitivities: [], specificities: [] };
-    const limits = getThresholds(tests);
-    for (const limit of limits) {
-      let truePositives = 0;
-      let falsePositives = 0;
-      let trueNegatives = 0;
-      let falseNegatives = 0;
-      for (let j = 0; j < numericalTargets.length; j++) {
-        if (tests[j] > limit && numericalTargets[j] > limit) truePositives++;
-        if (tests[j] >= limit && numericalTargets[j] <= limit) falsePositives++;
-        if (tests[j] < limit && numericalTargets[j] < limit) trueNegatives++;
-        if (tests[j] <= limit && numericalTargets[j] >= limit) falseNegatives++;
-      }
+    for (let i = 0; i < truePositives.length; i++) {
       curve.sensitivities.push(
-        truePositives / (truePositives + falseNegatives),
+        truePositives[i] / (truePositives[i] + falseNegatives[i]),
       );
 
       curve.specificities.push(
-        trueNegatives / (falsePositives + trueNegatives),
+        trueNegatives[i] / (falsePositives[i] + trueNegatives[i]),
       );
     }
     curves.push(curve);
